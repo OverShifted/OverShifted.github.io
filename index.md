@@ -1,5 +1,8 @@
-# OverShifted's Blog
+---
+title: OverShifted's blog
+layout: page
+description: My blog's homepage
+---
 
-<br>
-## Posts
-### [Cracking River Raid with Stella emulator](/cracking_river_raid)
+Hi! here is my little blog I'm currently working on.
+You can see my projects over [here](/projects).

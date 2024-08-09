@@ -1,21 +1,37 @@
-# Cracking River Raid with Stella emulator
+---
+title: Cracking River Raid with Stella emulator
+desc: I went through cracking an old Atari game with the help of an emulator
+date: 2021-08-28 11:23 AM
+
+layout: post
+---
+
+```python
+class Player:
+    def update():
+        print(self)
+
+player = Player()
+player.update()
+```
+
 River Raid is an old Atari game where you should fly over a river without hitting hills, ships and other aircrafts, and not running out of fuel.
 And this is how I managed to crack the game by changing its assembly code, in a way that I will never lose the game.
 
-## Getting started
+### Getting started
 To follow this guide, you are going to need the Stella emulator and River Raid ROM. Which you can find [here](https://stella-emu.github.io/downloads.html) and [here](http://www.atarimania.com/game-atari-2600-vcs-river-raid_s6826.html).
 
 After installing and running Stella, you should see something like this:
 
-![stella_home](stella_home.png)
+![stella_home](/assets/cracking_river_raid/stella_home.png)
 
 To load the ROM, open the downloaded zip file or the `.bin` file inside it, in Stella.
 
-![stella_running_river_raid](stella_running_river_raid.png)
+![stella_running_river_raid](/assets/cracking_river_raid/stella_running_river_raid.png)
 
 To start the game on a real Atari, you need to press the `reset` button. On Stella, this key is mapped to the `F2` key by default. So press it and start playing the game. Right and left arrows will move the player and the space key will shoot some missiles.
 
-![playing_river_raid_on_stella](playing_river_raid_on_stella.png)
+![playing_river_raid_on_stella](/assets/cracking_river_raid/playing_river_raid_on_stella.png)
 
 There are three ways to lose the game:
 1. Colliding with ships, aircrafts and bridges 🚁
@@ -28,11 +44,11 @@ Two first "ways" of losing are pretty similar, but are handled diffrently in the
 Unlike modern games which use seprated systems for rendering and physics, older games detected collisions between diffrent objects while rendering.
 Atari lets you define a ***limited number*** of sprites, with ***limited sizes***. Then you can tell the system where to render these sprites. During rendering, when the scanline "scans" the screen, the system also checks for collision between those sprites and change some registers accordingly. To explore this, press the `~` key (next to `1`) to enter Stella's debug mode. the game will be paused automatically.
 
-![stella_debug_mode](stella_debug_mode.png)
+![stella_debug_mode](/assets/cracking_river_raid/stella_debug_mode.png)
 
 Head over to `TIA` tab to see graphics and collision information. Then enable `Debug Colors` option. It will allow us to detect where sprites are rendered on the screen. To see changes; click `Frame +1` key to render another frame with debug colors.
 
-![tia_tab](tia_tab.png)
+![tia_tab](/assets/cracking_river_raid/tia_tab.png)
 
 It will give us a weird looking image.
 Lets forget about the in-game-GUI for now and focus on the color of the rest of the screen.
@@ -43,7 +59,7 @@ Lets forget about the in-game-GUI for now and focus on the color of the rest of 
 
 By looking at the colors under the `Debug Colors` checkbox, You can see which sprite is associated with each part of the screen.
 
-![color_codes](color_codes.png)
+![color_codes](/assets/cracking_river_raid/color_codes.png)
 
 
 | Object Name      | Atari Sprite ID |
@@ -82,13 +98,13 @@ Unfortunately I couldn't find a way to do that automatically in Stella (like "fi
 
 First way is pretty straight forward. But second one is harder. Because if you want to search for a bit with value of `0x7` (`0x7` is address of `CXPPMM`); You will get alot of matches which do not mean `CXPPMM`. Like this one:
 
-![invalid_0x07_match](invalid_0x07_match.png)
+![invalid_0x07_match](/assets/cracking_river_raid/invalid_0x07_match.png)
 
 Here, `0x07` means `COLUP1` instead of `CXPPMM`.
 
 After following first way, you will find a first match at `0x2f3` (aka `f2f3`):
 
-![first_CXPPMM_match.png](first_CXPPMM_match.png)
+![first_CXPPMM_match.png](/assets/cracking_river_raid/first_CXPPMM_match.png)
 
 Great! But what does it mean?
 

@@ -1,0 +1,31 @@
+:root {
+    #comments-container-light {
+        display: block;
+    }
+    
+    #comments-container-dark {
+        display: none;
+    }
+}
+
+:root[data-theme="dark"] {
+    #comments-container-light {
+        display: none;
+    }
+    
+    #comments-container-dark {
+        display: block;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] {
+        #comments-container-light {
+            display: none;
+        }
+        
+        #comments-container-dark {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,13 @@
+---
+title: Posts
+layout: page
+description: my posts
+---
+
+<div id="post-widgets-container">
+    {% for post in site.posts %}
+        <li>
+             {% include post-widget.html post=post %}
+        </li>
+    {% endfor %}
+</div>

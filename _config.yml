@@ -1,8 +1,11 @@
-theme: jekyll-theme-leap-day
+# theme: overshifted-theme
+# theme: jekyll-theme-leap-day
 
-remote_theme: pages-themes/leap-day@v0.2.0
+#remote_theme: pages-themes/leap-day@v0.2.0
 plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+#- jekyll-remote-theme # add this line to the plugins list if you already have one
+  # - jekyll-minifier
+  - jekyll-feed
 
 title: OverShifted's Blog
 google_analytics: UA-145422051-1
