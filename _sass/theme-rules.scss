@@ -1,0 +1,33 @@
+@mixin img-dark-rules {
+    img.img-light-only {
+        display: none;
+    }
+    
+    img.img-dark-only {
+        display: block;
+    }
+}
+
+:root {
+    @import "syntax-light";
+
+    img.img-light-only {
+        display: block;
+    }
+
+    img.img-dark-only {
+        display: none;
+    }
+}
+
+:root[data-theme="dark"] {
+    @import "syntax-dark";
+    @include img-dark-rules;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root[data-theme="auto"] {
+        @import "syntax-dark";
+        @include img-dark-rules;
+    }
+}

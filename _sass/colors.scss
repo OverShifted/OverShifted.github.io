@@ -3,6 +3,7 @@
     --page-bg-color: white;
     --page-bg-darker-color: #bdc7d0;
     --content-bg-color: white;
+    // --qoute-bg-color: #f4f4f4;
     --tr-0-bg-color: rgb(74 153 255 / 20%);
     --tr-1-bg-color: transparent;
     
@@ -22,9 +23,6 @@
     --text-main: #333;
     --text-bright: #000;
     --selection: #1c76c540;
-
-    --content-horizontal-padding: 2rem;
-    --grid-gap: 1rem;
 }
 
 @mixin dark-colors {

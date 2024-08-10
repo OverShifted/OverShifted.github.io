@@ -3,9 +3,11 @@
 <div class="post-widget">
     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
     <div class="post-date">{{ post.date }}</div>
-    {% if post.desc %}
-        <p>{{ post.desc }}</p>
-    {% else %}
-        <p><i>No description.</i></p>
-    {% endif %}
+    <p>
+        {% if post.desc %}
+            {{ post.desc }}
+        {% else %}
+            <i>No description.</i>
+        {% endif %}
+    </p>
 </div>

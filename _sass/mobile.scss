@@ -1,4 +1,8 @@
 @media (max-width: 800px) {
+    :root {
+        --content-horizontal-padding: 1rem;
+    }
+
     body {
         padding: 0;
     }
@@ -8,6 +12,15 @@
 
         li {
             margin-left: 1em !important;
+        }
+    }
+    
+    footer {
+        flex-direction: column;
+
+        > a {
+            // Oops! You found an easter egg.
+            display: block !important;
         }
     }
 }

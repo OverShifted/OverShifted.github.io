@@ -5,6 +5,9 @@
     
 :root {
     @include light-colors;
+
+    --content-horizontal-padding: 2rem;
+    --grid-gap: 1rem;
 }
 
 :root[data-theme="dark"] {
@@ -128,7 +131,7 @@ header {
 
         #theme-switcher {
             margin: auto 0;
-            padding: 10px 12px;
+            padding: 12px 12px 8px 12px;
 
             border-radius: 0;
             transform: none;
@@ -182,6 +185,11 @@ code {
     line-height: 130%;
 }
 
+blockquote {
+    // background-color: var(--qoute-bg-color);
+    background-color: var(--background);
+}
+
 var {
     font-family: "Iosevka Web", monospace !important;
 }
@@ -194,6 +202,11 @@ footer {
     border: none;
     padding: 1rem var(--content-horizontal-padding);
 
+    display: flex;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+    gap: 1rem;
+
     > * {
         text-align: center;
     }
@@ -201,4 +214,4 @@ footer {
 
 @import "comments";
 @import "mobile";
-@import "syntax";
+@import "theme-rules";
