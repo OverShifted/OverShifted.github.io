@@ -1,8 +1,10 @@
 title: OverShifted's Blog
+url: "https://overshifted.github.io"
 
 plugins:
-  - jekyll-minifier
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-minifier
 
 jekyll-minifier:
   exclude:
