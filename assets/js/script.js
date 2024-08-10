@@ -11,22 +11,6 @@
 
 window.addEventListener('load', () => {
     document.getElementById('theme-switcher').addEventListener('click', (e) => {
-        // let currentTheme = document.documentElement.getAttribute('data-theme') || 'auto'
-
-        // // auto, dark, light
-        // let nextTheme = {
-        //     'auto': 'dark',
-        //     'dark': 'light',
-        //     'light': 'auto'
-        // }[currentTheme]
-
-        // console.log(`${currentTheme} => ${nextTheme}`)
-
-        // document.documentElement.setAttribute('data-theme', nextTheme)
-
-
-
-
         let currentTheme = document.documentElement.getAttribute('data-theme') || 'auto'
 
         if (currentTheme === 'auto')
@@ -39,8 +23,6 @@ window.addEventListener('load', () => {
             'light': 'dark',
             'dark': 'light'
         }[currentTheme]
-
-        // console.log(`${currentTheme} => ${nextTheme}`)
 
         document.documentElement.setAttribute('data-theme', nextTheme)
         localStorage.setItem('theme', nextTheme);

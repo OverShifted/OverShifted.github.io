@@ -4,12 +4,7 @@ layout: default
 
 <!DOCTYPE html>
 <html data-theme="auto">
-    <head>
-        <title>{{ page.title }}</title>
-
-        {% include styles.html %}
-        <meta charset="utf-8"/>
-    </head>
+    {% include head.html title=page.title %}
 
     <body>
         <div id="main-grid">

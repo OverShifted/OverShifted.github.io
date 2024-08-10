@@ -4,14 +4,7 @@ layout: default
 
 <!DOCTYPE html>
 <html data-theme="auto">
-    <head>
-        <title>{{ page.title }}</title>
-
-        {% include styles.html %}
-
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">  
-    </head>
+    {% include head.html title=page.title %}
 
     <body>
         <div id="main-grid">
