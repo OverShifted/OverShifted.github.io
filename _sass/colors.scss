@@ -1,0 +1,53 @@
+@mixin light-colors {
+    // --page-bg-color: rgb(216, 226, 236);
+    --page-bg-color: white;
+    --page-bg-darker-color: #bdc7d0;
+    --content-bg-color: white;
+    --tr-0-bg-color: rgb(74 153 255 / 20%);
+    --tr-1-bg-color: transparent;
+    
+    --accent-color: rgb(74, 153, 255);
+    --accent-darker-color: rgb(48, 108, 185);
+    --muted-color: rgb(130, 130, 130);
+    --text-muted: var(--muted-color);
+    // --nav-marker-color: var(--muted-color);
+    --nav-marker-color: var(--accent-color);
+    --nav-link-color: var(--text-main);
+    --nav-home-link-color: white;
+    --table-border-color: var(--accent-darker-color);
+
+    --background-body: var(--page-bg-color);
+    --background: #f0f0f0;
+    --button-base: var(--background);
+    --text-main: #333;
+    --text-bright: #000;
+    --selection: #1c76c540;
+
+    --content-horizontal-padding: 2rem;
+    --grid-gap: 1rem;
+}
+
+@mixin dark-colors {
+    --page-bg-color: #1a1a1a;
+    --page-bg-darker-color: rgb(5, 21, 32);
+    --content-bg-color: #191919;
+    // --tr-0-bg-color: #292929;
+    // --tr-1-bg-color: #303030; //TODO:
+
+    --accent-darker-color: rgb(79, 139, 217);
+    // --muted-color: rgb(111 124 136);
+    --muted-color: #888;
+    // --nav-marker-color: rgb(200, 200, 200);
+    --nav-marker-color: var(--accent-color);
+    // --nav-link-color: white;
+
+    --scrollbar-thumb: var(--accent-darker-color);
+    --background: #2d2d2d;
+    --button-base: var(--background);
+    --button-hover: #4d4d4d;
+    --text-main: #dddddd;
+    --text-bright: #eee;
+    --selection: #1c76c5d0;
+    --code: white;
+    --border: var(--muted-color);
+}

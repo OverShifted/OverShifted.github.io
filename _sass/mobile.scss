@@ -2,4 +2,12 @@
     body {
         padding: 0;
     }
+
+    nav > ul {
+        flex-direction: column;
+
+        li {
+            margin-left: 1em !important;
+        }
+    }
 }

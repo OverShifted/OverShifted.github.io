@@ -18,7 +18,7 @@ player.update()
 River Raid is an old Atari game where you should fly over a river without hitting hills, ships and other aircrafts, and not running out of fuel.
 And this is how I managed to crack the game by changing its assembly code, in a way that I will never lose the game.
 
-### Getting started
+## Getting started
 To follow this guide, you are going to need the Stella emulator and River Raid ROM. Which you can find [here](https://stella-emu.github.io/downloads.html) and [here](http://www.atarimania.com/game-atari-2600-vcs-river-raid_s6826.html).
 
 After installing and running Stella, you should see something like this:

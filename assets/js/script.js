@@ -1,5 +1,14 @@
 // This file is distributed under GNU GPL 3.0 or later
 
+// Load saved theme
+{
+    let savedTheme = localStorage.getItem('theme') || 'auto'
+    if (!['auto', 'dark', 'light'].includes(savedTheme))
+        savedTheme = 'auto'
+
+    document.documentElement.setAttribute('data-theme', savedTheme)
+}
+
 window.addEventListener('load', () => {
     document.getElementById('theme-switcher').addEventListener('click', (e) => {
         // let currentTheme = document.documentElement.getAttribute('data-theme') || 'auto'
@@ -31,8 +40,9 @@ window.addEventListener('load', () => {
             'dark': 'light'
         }[currentTheme]
 
-        console.log(`${currentTheme} => ${nextTheme}`)
+        // console.log(`${currentTheme} => ${nextTheme}`)
 
         document.documentElement.setAttribute('data-theme', nextTheme)
+        localStorage.setItem('theme', nextTheme);
     })
 })

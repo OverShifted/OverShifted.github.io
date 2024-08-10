@@ -1,8 +1,4 @@
-:root[data-theme="auto"] {
-    @import "syntax-light";
-}
-
-:root[data-theme="light"] {
+:root {
     @import "syntax-light";
 }
 

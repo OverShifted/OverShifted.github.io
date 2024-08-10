@@ -1,71 +1,19 @@
 ---
 ---
+
+@import "colors.scss";
     
 :root {
-    --page-bg-color: rgb(216, 226, 236);
-    --page-bg-darker-color: #bdc7d0;
-    --content-bg-color: white;
-    --tr-0-bg-color: rgb(74 153 255 / 20%);
-    --tr-1-bg-color: transparent;
-    
-    --accent-color: rgb(74, 153, 255);
-    --accent-darker-color: rgb(48, 108, 185);
-    --muted-color: rgb(90, 90, 90);
-    // --nav-marker-color: var(--muted-color);
-    --nav-marker-color: var(--accent-color);
-    --nav-link-color: var(--text-main);
-    --nav-home-link-color: white;
-    --table-border-color: var(--accent-darker-color);
-
-    --background-body: var(--page-bg-color);
-    --text-main: #333638;
-    --selection: #1c76c540;
-
-    --content-horizontal-padding: 2rem;
-    --grid-gap: 1rem;
+    @include light-colors;
 }
 
 :root[data-theme="dark"] {
-    --page-bg-color: #232a31;
-    --page-bg-darker-color: rgb(5, 21, 32);
-    --content-bg-color: #191919;
-    // --tr-0-bg-color: #292929;
-    // --tr-1-bg-color: #303030; //TODO:
-
-    --accent-darker-color: rgb(79, 139, 217);
-    --muted-color: rgb(111 124 136);
-    // --nav-marker-color: rgb(200, 200, 200);
-    --nav-marker-color: var(--accent-color);
-    // --nav-link-color: white;
-
-    --scrollbar-thumb: var(--accent-darker-color);
-    --background: #141a20;
-    --text-main: #edf6ff;
-    --selection: #1c76c5d0;
-    --code: white;
-    --border: var(--muted-color);
+    @include dark-colors;
 }
 
 @media (prefers-color-scheme: dark) {
     :root[data-theme="auto"] {
-        --page-bg-color: #232a31;
-        --page-bg-darker-color: rgb(5, 21, 32);
-        --content-bg-color: #191919;
-        // --tr-0-bg-color: #292929;
-        // --tr-1-bg-color: #303030; //TODO:
-    
-        --accent-darker-color: rgb(79, 139, 217);
-        --muted-color: rgb(111 124 136);
-        // --nav-marker-color: rgb(200, 200, 200);
-        --nav-marker-color: var(--accent-color);
-        // --nav-link-color: white;
-
-        --scrollbar-thumb: var(--accent-darker-color);
-        --background: #141a20;
-        --text-main: #edf6ff;
-        --selection: #1c76c5d0;
-        --code: white;
-        --border: var(--muted-color);
+        @include dark-colors;
     }
 }
     
@@ -127,7 +75,7 @@ header {
     gap: var(--grid-gap);
 
     // font-family: Roboto;
-    font-family: "NotoSerif";
+    font-family: "Noto Serif", serif;
 
     #content-grid-item {
         // box-shadow: 
@@ -139,8 +87,8 @@ header {
         // border-bottom: 2px solid var(--page-bg-darker-color);
 
         h1, h2, h3, h4, h5, h6 {
-            // font-family: monospace;
-            text-align: center;
+            font-family: Roboto, sans-serif;
+            // text-align: center;
             margin-top: 2.5rem;
         }
 
@@ -173,13 +121,19 @@ header {
 
     #nav-header-grid-item/*, #page-date */{
         // background-color: blanchedalmond;
-        font-family: monospace;
+        font-family: "Iosevka Web", monospace;
 
         display: flex;
         justify-content: space-between;
 
         #theme-switcher {
-            margin: 0;
+            margin: auto 0;
+            padding: 10px 12px;
+
+            border-radius: 0;
+            transform: none;
+
+            fill: var(--text-bright);
         }
     }
 }
@@ -232,6 +186,13 @@ hr {
 
 code {
     border-radius: 0;
+    font-family: "Iosevka Web", monospace;
+    line-height: 130%;
+}
+
+var {
+    font-family: "Iosevka Web", monospace !important;
+    // display: none;
 }
 
 #pre-footer-hr-grid-item {
@@ -241,6 +202,10 @@ code {
 footer {
     border: none;
     padding: 1rem var(--content-horizontal-padding);
+
+    > * {
+        text-align: center;
+    }
 }
 
 @import "comments";

@@ -1,4 +1,4 @@
-:root {
+@mixin light-comments {
     #comments-container-light {
         display: block;
     }
@@ -8,7 +8,7 @@
     }
 }
 
-:root[data-theme="dark"] {
+@mixin dark-comments {
     #comments-container-light {
         display: none;
     }
@@ -16,16 +16,18 @@
     #comments-container-dark {
         display: block;
     }
+}
+
+:root {
+    @include light-comments;
+}
+
+:root[data-theme="dark"] {
+    @include dark-comments;
 }
 
 @media (prefers-color-scheme: dark) {
     :root[data-theme="auto"] {
-        #comments-container-light {
-            display: none;
-        }
-        
-        #comments-container-dark {
-            display: block;
-        }
+        @include dark-comments;
     }
 }
