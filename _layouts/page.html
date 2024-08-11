@@ -11,9 +11,11 @@ layout: default
             {% include navbar.html %}
             
             <div id="content-grid-item">
-                <h1 id="page-title">{{ page.title }}</h1>
-                <span id="page-date">{{ page.date}}</span>
-                <hr>
+                {% unless page.hide_title %}
+                    <h1 id="page-title">{{ page.title }}</h1>
+                    <span id="page-date">{{ page.date}}</span>
+                    <hr>
+                {% endunless %}
                 {{ content }}
             </div>
 

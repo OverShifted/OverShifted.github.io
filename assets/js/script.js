@@ -1,4 +1,5 @@
 // This file is distributed under GNU GPL 3.0 or later
+"use strict";
 
 // Load saved theme
 {

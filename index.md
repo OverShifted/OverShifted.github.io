@@ -1,7 +1,9 @@
 ---
 title: OverShifted's blog
-layout: page
 description: My blog's homepage
+
+layout: page
+# hide_title: true
 ---
 
 Hi! here is my little blog I'm currently working on.
