@@ -1,0 +1,24 @@
+@import "colors";
+@import "syntax-dark";
+
+@mixin theme-dark {
+    @include colors-dark;
+
+    img.img-light-only {
+        display: none;
+    }
+    
+    img.img-dark-only {
+        display: block;
+    }
+
+    #comments-container-light {
+        display: none;
+    }
+    
+    #comments-container-dark {
+        display: block;
+    }
+
+    @include syntax-dark;
+}

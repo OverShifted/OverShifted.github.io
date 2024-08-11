@@ -1,23 +1,12 @@
 ---
 ---
 
-@import "colors.scss";
-    
-:root {
-    @include light-colors;
+@import "colors";
+@import "theme-rules";
 
+:root {
     --content-horizontal-padding: 2rem;
     --grid-gap: 1rem;
-}
-
-:root[data-theme="dark"] {
-    @include dark-colors;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root[data-theme="auto"] {
-        @include dark-colors;
-    }
 }
     
 body {
@@ -212,6 +201,4 @@ footer {
     }
 }
 
-@import "comments";
 @import "mobile";
-@import "theme-rules";

@@ -1,0 +1,28 @@
+// Light theme rules must be applied even when the dark theme
+// is being used. Since it's more like a "base" theme.
+
+@import "colors";
+@import "syntax-light";
+
+// Gets applied on :root
+@mixin theme-light {
+    @include colors-light;
+    
+    img.img-light-only {
+        display: block;
+    }
+    
+    img.img-dark-only {
+        display: none;
+    }
+
+    #comments-container-light {
+        display: block;
+    }
+    
+    #comments-container-dark {
+        display: none;
+    }
+
+    @include syntax-light;
+}
