@@ -10,7 +10,7 @@ River Raid is an old Atari game where you should fly over a river without hittin
 And this is how I managed to crack the game by changing its assembly code, in a way that I will never lose the game.
 
 ## Getting started
-To follow this guide, you are going to need the Stella emulator and the River Raid ROM. Which you can find [here](https://stella-emu.github.io/downloads.html) and [here](http://www.atarimania.com/game-atari-2600-vcs-river-raid_s6826.html).
+To follow this guide, you are going to an emulator to *emulate* a real Atari device and the River Raid ROM (RRR? :) file. I've decided to use the [Stella emulator](https://stella-emu.github.io) and I found a copy of the ROM file [here](http://www.atarimania.com/game-atari-2600-vcs-river-raid_s6826.html).
 
 Now, run Stella and find the downloaded ROM file (It is probably a `.zip` file), you should see something like this:
 
@@ -18,16 +18,16 @@ Now, run Stella and find the downloaded ROM file (It is probably a `.zip` file),
 
 {% include themed-img.html
     alt="stella_home"
-    light="/assets/cracking_river_raid/new-images/1l.png"
-    dark="/assets/cracking_river_raid/new-images/1d.png" %}
+    light="/assets/cracking_river_raid/1l.png"
+    dark="/assets/cracking_river_raid/1d.png" %}
 
 Then, load the ROM by double-clicking on it. The game should start running:
 
-![stella_running_river_raid](/assets/cracking_river_raid/new-images/2.png)
+![stella_running_river_raid](/assets/cracking_river_raid/2.png)
 
 But, to *really* start the game on a real Atari, you need to press the `reset` button. On Stella, this key is mapped to `F2` by default. So press it and start playing the game. Right and left arrows will move the player and space will fire some missiles.
 
-![playing_river_raid_on_stella](/assets/cracking_river_raid/new-images/3.png)
+![playing_river_raid_on_stella](/assets/cracking_river_raid/3.png)
 
 There are three ways to lose the game:
 1. Colliding with ships, aircrafts and bridges 🚁
@@ -42,15 +42,15 @@ Atari lets you define a limited number of sprites, with limited sizes. Then you 
 
 {% include themed-img.html
     alt="stella_debug_mode"
-    light="/assets/cracking_river_raid/new-images/4l.png"
-    dark="/assets/cracking_river_raid/new-images/4d.png" %}
+    light="/assets/cracking_river_raid/4l.png"
+    dark="/assets/cracking_river_raid/4d.png" %}
 
 Head over to `TIA` tab to see graphics and collision information. Then, check the `Debug Colors` option. It will allow us to detect where sprites are rendered on the screen. To see the changes, click the `Frame +1` button to render the next frame with debug colors.
 
 {% include themed-img.html
     alt="tia_tab"
-    light="/assets/cracking_river_raid/new-images/5l-overlay.png"
-    dark="/assets/cracking_river_raid/new-images/5d-overlay.png" %}
+    light="/assets/cracking_river_raid/5l-overlay.png"
+    dark="/assets/cracking_river_raid/5d-overlay.png" %}
 
 It will show us a weird looking image. As you can see:
 
@@ -62,8 +62,8 @@ By looking at the colors under the `Debug Colors` checkbox, You can see which *s
 
 {% include themed-img.html
     alt="color_codes"
-    light="/assets/cracking_river_raid/new-images/6l-cropped.png"
-    dark="/assets/cracking_river_raid/new-images/6d-cropped.png" %}
+    light="/assets/cracking_river_raid/6l-cropped.png"
+    dark="/assets/cracking_river_raid/6d-cropped.png" %}
 
 
 | Object Name      | Atari Sprite ID                                               |
@@ -104,8 +104,8 @@ First way is pretty straight forward. But second one is *a bit* harder. Because 
 
 {% include themed-img.html
     alt="color_codes"
-    light="/assets/cracking_river_raid/new-images/7l-cropped.png"
-    dark="/assets/cracking_river_raid/new-images/7d-cropped.png" %}
+    light="/assets/cracking_river_raid/7l-cropped.png"
+    dark="/assets/cracking_river_raid/7d-cropped.png" %}
 
 Here, `0x07` is interpreted as `COLUP1` instead of `CXPPMM`.
 
@@ -113,8 +113,8 @@ By following first way, you will find the first match at address `0x2f3` (aka `f
 
 {% include themed-img.html
     alt="color_codes"
-    light="/assets/cracking_river_raid/new-images/8l-cropped.png"
-    dark="/assets/cracking_river_raid/new-images/8d-cropped.png" %}
+    light="/assets/cracking_river_raid/8l-cropped.png"
+    dark="/assets/cracking_river_raid/8d-cropped.png" %}
 
 Great! But what does it mean?
 
