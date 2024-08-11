@@ -20,5 +20,9 @@
         display: block;
     }
 
+    #backfire-canvas {
+        opacity: 55%;
+    }
+
     @include syntax-dark;
 }

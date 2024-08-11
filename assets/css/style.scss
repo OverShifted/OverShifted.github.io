@@ -109,6 +109,14 @@ header {
         // a:hover {
         //     text-decoration-style: solid;
         // }
+
+        ul {
+            line-height: 150%;
+
+            code {
+                padding: 1px 3px;
+            }
+        }
     }
 
     #nav-header-grid-item/*, #page-date */{
@@ -123,8 +131,6 @@ header {
             padding: 12px 12px 8px 12px;
 
             border-radius: 0;
-            transform: none;
-
             fill: var(--text-bright);
         }
     }
@@ -199,6 +205,32 @@ footer {
     > * {
         text-align: center;
     }
+}
+
+#backfire-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -10;
+
+    width: 100%;
+    height: 100%;
+}
+
+#backfire-canvas.pixelated {
+    image-rendering: pixelated;
+}
+
+input, button {
+    transform: none !important;
+}
+
+p {
+    margin-block-end: 0em;
+}
+
+.muted {
+    color: var(--muted-color)
 }
 
 @import "mobile";
