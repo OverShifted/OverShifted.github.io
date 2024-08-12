@@ -6,7 +6,7 @@ description: License of this website
 
 This website's theme and layout is licensed under [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/), except the third-party [Water.css](https://watercss.kognise.dev/) which is licensed under the [MIT license](https://github.com/kognise/water.css/blob/master/LICENSE.md)
 
-"Website's theme and layout" includes all and only files under the following directories of the [git repository](https://github.com/OverShifted/Overshifted.github.io):
+"Website's theme and layout" includes all and only files under the following directories of the [git repository](https://github.com/OverShifted/OverShifted.github.io):
 - `_includes`
 - `_layouts`
 - `_sass`
