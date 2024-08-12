@@ -1,7 +1,7 @@
 // This file is distributed under GNU GPL 3.0 or later
 "use strict";
 
-const canvas = document.getElementById('backfire-canvas')
+const canvas = document.getElementById('spice-canvas')
 const ctx = canvas.getContext('2d')
 
 const massiveModeStep = 150
@@ -14,7 +14,7 @@ const normalCanvasScale = 1
 // Settings
 var maxParticleCount = normalMaxParticleCount
 var canvasScale = normalCanvasScale
-var effectEnabled = false
+var spiceEnabled = false
 var massiveMode = false
 
 function drawCircle(centerX, centerY, radius, color) {
@@ -145,7 +145,7 @@ function update() {
 }
 
 function render() {
-    if (!effectEnabled)
+    if (!spiceEnabled)
         return
     
     requestAnimationFrame(render)
@@ -157,13 +157,13 @@ function render() {
     })
 }
 
-var effectToggle = document.getElementById('backfire-toggle')
-var effectSettings = document.getElementById('spice-settings')
-effectToggle.addEventListener('input', () => {
-    effectEnabled = effectToggle.checked
-    effectSettings.classList.toggle('hidden', !effectEnabled)
+var spiceToggle = document.getElementById('spice-toggle')
+var spiceSettings = document.getElementById('spice-settings')
+spiceToggle.addEventListener('input', () => {
+    spiceEnabled = spiceToggle.checked
+    spiceSettings.classList.toggle('hidden', !spiceEnabled)
 
-    if (effectEnabled)
+    if (spiceEnabled)
         render()
     else {
         scene = []
@@ -173,14 +173,14 @@ effectToggle.addEventListener('input', () => {
     setParticleCountGUI()
 })
 
-var pixelateToggle = document.getElementById('backfire-pixelate-toggle')
+var pixelateToggle = document.getElementById('spice-pixelate-toggle')
 pixelateToggle.addEventListener('input', () => { 
     canvas.classList.toggle('pixelated', pixelateToggle.checked)
     canvasScale = pixelateToggle.checked ? pixelateCanvasScale : normalCanvasScale
     setCanvasSize()
 })
 
-var massiveToggle = document.getElementById('backfire-massive-toggle')
+var massiveToggle = document.getElementById('spice-massive-toggle')
 massiveToggle.addEventListener('input', () => { 
     massiveMode = massiveToggle.checked
     maxParticleCount = massiveMode ? massiveMaxParticleCount : normalMaxParticleCount
@@ -188,12 +188,12 @@ massiveToggle.addEventListener('input', () => {
     setParticleCountGUI()
 })
 
-var effectParticleCount = document.getElementById('spice-particle-count')
+var spiceParticleCount = document.getElementById('spice-particle-count')
 function setParticleCountGUI() {
-    effectParticleCount.innerHTML = scene.length
+    spiceParticleCount.innerHTML = scene.length
 }
 
 setInterval(setParticleCountGUI, 200)
 
-// var particleCountSlider = document.getElementById('backfire-max-particle-count')
+// var particleCountSlider = document.getElementById('spice-max-particle-count')
 // particleCountSlider.addEventListener('inter', () => maxParticleCount = particleCountSlider.value)
