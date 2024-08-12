@@ -157,10 +157,22 @@ function render() {
     })
 }
 
-var spiceToggle = document.getElementById('spice-toggle')
+
+function setInputCallbackAndCall(id, callback) {
+    let element = document.getElementById(id)
+    element.addEventListener('input', () => callback(element))
+    callback(element)
+}
+
+var spiceParticleCount = document.getElementById('spice-particle-count')
+function setParticleCountGUI() {
+    spiceParticleCount.innerHTML = scene.length
+}
+setInterval(setParticleCountGUI, 200)
+
 var spiceSettings = document.getElementById('spice-settings')
-spiceToggle.addEventListener('input', () => {
-    spiceEnabled = spiceToggle.checked
+setInputCallbackAndCall('spice-toggle', (e) => {
+    spiceEnabled = e.checked
     spiceSettings.classList.toggle('hidden', !spiceEnabled)
 
     if (spiceEnabled)
@@ -173,27 +185,19 @@ spiceToggle.addEventListener('input', () => {
     setParticleCountGUI()
 })
 
-var pixelateToggle = document.getElementById('spice-pixelate-toggle')
-pixelateToggle.addEventListener('input', () => { 
-    canvas.classList.toggle('pixelated', pixelateToggle.checked)
-    canvasScale = pixelateToggle.checked ? pixelateCanvasScale : normalCanvasScale
+setInputCallbackAndCall('spice-pixelate-toggle', (e) => {
+    canvas.classList.toggle('pixelated', e.checked)
+    canvasScale = e.checked ? pixelateCanvasScale : normalCanvasScale
     setCanvasSize()
 })
 
-var massiveToggle = document.getElementById('spice-massive-toggle')
-massiveToggle.addEventListener('input', () => { 
-    massiveMode = massiveToggle.checked
+setInputCallbackAndCall('spice-massive-toggle', (e) => {
+    massiveMode = e.checked
     maxParticleCount = massiveMode ? massiveMaxParticleCount : normalMaxParticleCount
     scene = []
+    
     setParticleCountGUI()
 })
-
-var spiceParticleCount = document.getElementById('spice-particle-count')
-function setParticleCountGUI() {
-    spiceParticleCount.innerHTML = scene.length
-}
-
-setInterval(setParticleCountGUI, 200)
 
 // var particleCountSlider = document.getElementById('spice-max-particle-count')
 // particleCountSlider.addEventListener('inter', () => maxParticleCount = particleCountSlider.value)
