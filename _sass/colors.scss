@@ -8,13 +8,14 @@
     --tr-1-bg-color: transparent;
     
     --accent-color: rgb(74, 153, 255);
-    --accent-darker-color: rgb(48, 108, 185);
+    --accent-color-transparent: rgb(74, 153, 255, 30%);
+    --accent-color-darker: rgb(48, 108, 185);
     --muted-color: rgb(130, 130, 130);
     --text-muted: var(--muted-color);
     --nav-marker-color: var(--accent-color);
     --nav-link-color: var(--text-main);
     --nav-home-link-color: white;
-    --table-border-color: var(--accent-darker-color);
+    --table-border-color: var(--accent-color-darker);
 
     --background-body: var(--page-bg-color);
     --background: #f0f0f0;
@@ -29,11 +30,15 @@
     --page-bg-darker-color: rgb(5, 21, 32);
     --content-bg-color: #191919;
 
-    --accent-darker-color: rgb(79, 139, 217);
+    // --page-bg-color: #303030;
+    // --page-bg-darker-color: rgb(5, 21, 32);
+    // --content-bg-color: #1a1a1a;
+
+    --accent-color-darker: rgb(79, 139, 217);
     --muted-color: #888;
     --nav-marker-color: var(--accent-color);
 
-    --scrollbar-thumb: var(--accent-darker-color);
+    --scrollbar-thumb: var(--accent-color-darker);
     --background: #2d2d2d;
     --button-base: var(--background);
     --button-hover: #4d4d4d;

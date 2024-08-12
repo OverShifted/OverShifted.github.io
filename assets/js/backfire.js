@@ -4,10 +4,18 @@
 const canvas = document.getElementById('backfire-canvas')
 const ctx = canvas.getContext('2d')
 
+const massiveModeStep = 150
+const massiveMaxParticleCount = 1100
+const normalMaxParticleCount = 120
+
+const pixelateCanvasScale = 12
+const normalCanvasScale = 1
+
 // Settings
-var maxParticleCount = 120
-var canvasScale = 1
+var maxParticleCount = normalMaxParticleCount
+var canvasScale = normalCanvasScale
 var effectEnabled = false
+var massiveMode = false
 
 function drawCircle(centerX, centerY, radius, color) {
     ctx.beginPath()
@@ -49,27 +57,25 @@ const clamp = (v, min, max) => Math.min(Math.max(v, min), max)
 setCanvasSize()
 
 var [mouseX, mouseY] = [0, 0]
-var mouseDown = false
 
-window.addEventListener('mousemove', (e) => [mouseX, mouseY] = [e.x, e.y])
-document.addEventListener('mouseleave', (e) => [mouseX, mouseY] = [undefined, undefined])
-window.addEventListener('mousedown', (e) => [mouseX, mouseY, mouseDown] = [e.x, e.y, true])
-window.addEventListener('mouseup', (e) => mouseDown = false)
-window.addEventListener('resize', (e) => setCanvasSize())
+document.querySelector("body").addEventListener('mousemove', (e) => [mouseX, mouseY] = [e.x, e.y])
+document.querySelector("body").addEventListener('mouseenter', (e) => [mouseX, mouseY] = [e.x, e.y])
+document.querySelector("body").addEventListener('mouseleave', () => [mouseX, mouseY] = [undefined, undefined])
+window.addEventListener('resize', () => setCanvasSize())
 
-function addParticle() {
-    if (mouseX === undefined)
+function addParticle(x = mouseX, y = mouseY, fireBaseR = 20) {
+    if (x === undefined)
         return
 
     // Fire
     scene.push({
-        x: mouseX + random(15),
-        y: mouseY + random(15),
-        velX: random(15),
+        x: x + (massiveMode ? random(150) : random(15)),
+        y: y + random(15),
+        velX: massiveMode ? random(40) : random(15),
         velY: -100 + random(15),
 
-        r: 20 + random(10),
-        velR: (-20 + random(5)) / 1.2, // Yep! another random value.
+        r: fireBaseR + random(10),
+        velR: (-fireBaseR + random(5)) / (massiveMode ? 1.5 : 1.2), // Yep! another random value.
 
         timeAlive: 0,
         lifeTime: 1.2,
@@ -80,8 +86,8 @@ function addParticle() {
 
     // Smoke
     scene.push({
-        x: mouseX,
-        y: mouseY - 10,
+        x: x + (massiveMode ? random(150) : 0),
+        y: y - (massiveMode ? 20 : 10),
         velX: random(40),
         velY: -120 + random(30),
 
@@ -113,10 +119,14 @@ function update() {
     lastUpdateTime = currentTime
 
     let timeSinceLastParticlSpawnMs = currentTime.getTime() - lastParticleSpawnTime.getTime()
-    if (/*mouseDown && */timeSinceLastParticlSpawnMs >= 20)
-    {
-        addParticle()
+    if (timeSinceLastParticlSpawnMs >= 20) {
         lastParticleSpawnTime = currentTime
+
+        if (massiveMode)
+            for (let i = 0; i < 10; i++)
+                addParticle(Math.random() * window.innerWidth, window.innerHeight + 40, 30)
+        else
+            addParticle()
     }
 
     var i = scene.length
@@ -129,7 +139,7 @@ function update() {
         obj.x += obj.velX * deltaTime
         obj.y += obj.velY * deltaTime
         
-        if (obj.y + obj.r <= 0 || obj.r <= 0.01)
+        if (obj.y + obj.r <= 0 || obj.y + obj.r <= 0 || obj.x - obj.r >= window.innerWidth || obj.r <= 1)
             scene.splice(i, 1)
     }
 }
@@ -147,8 +157,11 @@ function render() {
     })
 }
 
-function updateEffectEnabled() {
+var effectToggle = document.getElementById('backfire-toggle')
+var effectSettings = document.getElementById('spice-settings')
+effectToggle.addEventListener('input', () => {
     effectEnabled = effectToggle.checked
+    effectSettings.classList.toggle('hidden', !effectEnabled)
 
     if (effectEnabled)
         render()
@@ -156,18 +169,31 @@ function updateEffectEnabled() {
         scene = []
         clearCanvas()
     }
-}
 
-var effectToggle = document.getElementById('backfire-toggle')
-effectToggle.addEventListener('input', () => updateEffectEnabled())
-updateEffectEnabled()
+    setParticleCountGUI()
+})
 
 var pixelateToggle = document.getElementById('backfire-pixelate-toggle')
 pixelateToggle.addEventListener('input', () => { 
     canvas.classList.toggle('pixelated', pixelateToggle.checked)
-    canvasScale = pixelateToggle.checked ? 10 : 1
+    canvasScale = pixelateToggle.checked ? pixelateCanvasScale : normalCanvasScale
     setCanvasSize()
 })
+
+var massiveToggle = document.getElementById('backfire-massive-toggle')
+massiveToggle.addEventListener('input', () => { 
+    massiveMode = massiveToggle.checked
+    maxParticleCount = massiveMode ? massiveMaxParticleCount : normalMaxParticleCount
+    scene = []
+    setParticleCountGUI()
+})
+
+var effectParticleCount = document.getElementById('spice-particle-count')
+function setParticleCountGUI() {
+    effectParticleCount.innerHTML = scene.length
+}
+
+setInterval(setParticleCountGUI, 200)
 
 // var particleCountSlider = document.getElementById('backfire-max-particle-count')
 // particleCountSlider.addEventListener('inter', () => maxParticleCount = particleCountSlider.value)

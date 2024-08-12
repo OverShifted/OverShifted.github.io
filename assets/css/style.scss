@@ -47,17 +47,25 @@ header {
         }
 
         > li {
-            padding: 5px 0;
+            padding: 0;
             
             > a {
                 color: var(--nav-link-color);
                 padding: 5px 0;
+                margin: auto;
+                display: block;
             }
         }
         
         > li::marker {
             content: "~/";
             color: var(--nav-marker-color);
+        }
+
+        > li:has(a:hover) {
+            background: var(--accent-color-transparent);
+            box-shadow: -25px 0 0 0px var(--accent-color-transparent),
+                        5px 0 0 0px var(--accent-color-transparent);
         }
     }
 }
@@ -67,7 +75,8 @@ header {
     gap: var(--grid-gap);
 
     // font-family: Roboto;
-    font-family: "Noto Serif", serif;
+    // font-family: "Noto Serif", serif;
+    font-family: "Mate", serif;
 
     #content-grid-item {
         // box-shadow: 
@@ -79,18 +88,19 @@ header {
         // border-bottom: 2px solid var(--page-bg-darker-color);
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: Roboto, sans-serif;
+            // font-family: Roboto, sans-serif;
+            font-family: "Iosevka Web", monospace;
             // text-align: center;
             margin-top: 2.5rem;
         }
 
         h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-            color: var(--accent-darker-color);
+            color: var(--accent-color-darker);
         }
 
-        // h1::before { content: "# "; }
-        // h2::before { content: "## "; }
-        // h3::before { content: "### "; }
+        h1::before { content: "# "; }
+        h2::before { content: "## "; }
+        h3::before { content: "### "; }
 
         // a::before {
         //     content: "[";
@@ -207,6 +217,31 @@ footer {
     }
 }
 
+#post-widgets-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 1rem;
+
+    list-style: none;
+}
+
+.post-widget {
+    padding: 1rem;
+
+    > h2 {
+        display: inline;
+    }
+
+    > div.post-date {
+        color: var(--muted-color);
+    }
+
+    > p {
+        margin: 0.5rem 0 0 0;
+    }
+}
+
 #backfire-canvas {
     position: fixed;
     top: 0;
@@ -225,12 +260,22 @@ input, button {
     transform: none !important;
 }
 
-p {
-    margin-block-end: 0em;
-}
-
 .muted {
     color: var(--muted-color)
+}
+
+ul {
+    list-style: none;
+
+    li::marker {
+        content: "* ";
+        font-family: "Iosevka Web", monospace;
+        color: var(--accent-color-darker);
+    }
+}
+
+#spice-settings.hidden {
+    display: none;
 }
 
 @import "mobile";
