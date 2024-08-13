@@ -69,9 +69,9 @@ function addParticle(x = mouseX, y = mouseY, fireBaseR = 20) {
 
     // Fire
     scene.push({
-        x: x + (massiveMode ? random(150) : random(15)),
+        x: x + (massiveMode ? 0 : random(15)),
         y: y + random(15),
-        velX: massiveMode ? random(40) : random(15),
+        velX: random(15),
         velY: -100 + random(15),
 
         r: fireBaseR + random(10),
@@ -86,13 +86,13 @@ function addParticle(x = mouseX, y = mouseY, fireBaseR = 20) {
 
     // Smoke
     scene.push({
-        x: x + (massiveMode ? random(150) : 0),
-        y: y - (massiveMode ? 20 : 10),
+        x: x,
+        y: y - (massiveMode ? 20 : 0),
         velX: random(40),
         velY: -120 + random(30),
 
-        r: 25 + random(10),
-        velR: (-15 + random(5)) / 1.2, // Yep! another random value.
+        r: 30 + random(5),
+        velR: (-(massiveMode ? 20 : 15) + random(5)) / 1.2, // Yep! another random value.
 
         timeAlive: 0,
         lifeTime: 1.2,
@@ -175,9 +175,11 @@ setInputCallbackAndCall('spice-toggle', (e) => {
     spiceEnabled = e.checked
     spiceSettings.classList.toggle('hidden', !spiceEnabled)
 
-    if (spiceEnabled)
+    if (spiceEnabled) {
+        // Resetting the timer to prevent "big" updates after pauses
+        lastUpdateTime = new Date()
         render()
-    else {
+    } else {
         scene = []
         clearCanvas()
     }
@@ -197,6 +199,17 @@ setInputCallbackAndCall('spice-massive-toggle', (e) => {
     scene = []
     
     setParticleCountGUI()
+})
+
+document.getElementById('spice-souce-code-link').addEventListener('mousedown', (e) => {
+    e.target.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+    if (e.button == 2)
+        setTimeout(() => e.target.href = "/assets/js/spice.js", 500)
+})
+
+document.getElementById('spice-souce-code-link').addEventListener('mouseup', (e) => {
+    setTimeout(() => e.target.href = "/assets/js/spice.js", 200)
 })
 
 // var particleCountSlider = document.getElementById('spice-max-particle-count')

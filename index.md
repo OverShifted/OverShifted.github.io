@@ -19,6 +19,8 @@ Hi, I am Sepehr. Here I write what I think. If you're interested to know who I a
         <label style="margin-top: 0.6em"><input type="checkbox" id="spice-pixelate-toggle"/>Pixelate the spice 👾</label>
         <br>
         <label><input type="checkbox" id="spice-massive-toggle"/>I have so many resources to waste ⛽</label>
+        <br>
+        <a href="/assets/js/spice.js" id="spice-souce-code-link">(Spice souce code)</a>
     </div>
 </div>
 <!-- <input type = "range" min="0" max="150" value="120" step="1" id="spice-max-particle-count"/> -->
