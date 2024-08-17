@@ -1,6 +1,6 @@
 ---
 title: OverShifted's blog
-description: My blog's homepage
+description: My name is Sepehr and I'm mostly interested in computers, mathematics and physics. I usually program in C/C++, Rust and Python and enjoy working on low-level systems, games, and even sometimes website front-ends.
 
 layout: page
 # hide_title: true

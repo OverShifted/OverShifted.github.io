@@ -1,7 +1,7 @@
 ---
 title: My projects
 layout: page
-description: List of my projects
+description: Some of the things I do
 ---
 
 - [OverEngine](https://github.com/OverShifted/OverEngine)

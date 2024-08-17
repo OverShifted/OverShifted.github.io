@@ -4,7 +4,7 @@ layout: default
 
 <!DOCTYPE html>
 <html data-theme="auto">
-    {% include head.html title=page.title %}
+    {% include head.html title=page.title description=page.description %}
 
     <body>
         <div id="main-grid">
@@ -12,7 +12,8 @@ layout: default
             
             <div id="content-grid-item">
                 <h1 id="page-title">{{ page.title }}</h1>
-                <span id="page-date">{{ page.date}}</span>
+                <div id="page-date">{{ page.date}}</div>
+                <!-- {{ page.description }} -->
                 <hr>
                 {{ content }}
 

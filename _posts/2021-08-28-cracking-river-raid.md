@@ -1,9 +1,7 @@
 ---
 title: Cracking River Raid with Stella emulator
-desc: I went through cracking an old Atari game with the help of an emulator
+description: I went through cracking an old Atari game with the help of an emulator
 date: 2021-08-28 11:23 AM
-
-layout: post
 ---
 
 River Raid is an old Atari game where you should fly over a river without hitting hills, ships and other aircrafts, without running out of fuel.
