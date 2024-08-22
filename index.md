@@ -31,7 +31,7 @@ Here you can find:
 - [A little biography](/about)
 <!-- - [My neighbours](/neighbours) -->
 
-### Links:
+Links:
 - Email: [prowidgs@gmail.com](mailto:prowidgs@gmail.com)
 - Discord: @OverShifted
 - Github: [@OverShifted](https://github.com/OverShifted)
