@@ -36,16 +36,16 @@ function interpolateColor(color1, color2, percent) {
     const r1 = parseInt(color1.substring(1, 3), 16)
     const g1 = parseInt(color1.substring(3, 5), 16)
     const b1 = parseInt(color1.substring(5, 7), 16)
-  
+
     const r2 = parseInt(color2.substring(1, 3), 16)
     const g2 = parseInt(color2.substring(3, 5), 16)
     const b2 = parseInt(color2.substring(5, 7), 16)
-  
+
     // Interpolate the RGB values
     const r = Math.round(r1 + (r2 - r1) * percent)
     const g = Math.round(g1 + (g2 - g1) * percent)
     const b = Math.round(b1 + (b2 - b1) * percent)
-  
+
     // Convert the interpolated RGB values back to a hex color
     return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)
 }
@@ -133,12 +133,12 @@ function update() {
     while (i--) {
         let obj = scene[i]
         obj.timeAlive += deltaTime
-        
+
         obj.r = Math.max(obj.r + obj.velR * deltaTime, 0)
-        
+
         obj.x += obj.velX * deltaTime
         obj.y += obj.velY * deltaTime
-        
+
         if (obj.y + obj.r <= 0 || obj.y + obj.r <= 0 || obj.x - obj.r >= window.innerWidth || obj.r <= 1)
             scene.splice(i, 1)
     }
@@ -147,10 +147,10 @@ function update() {
 function render() {
     if (!spiceEnabled)
         return
-    
+
     requestAnimationFrame(render)
     update()
-    
+
     clearCanvas()
     scene.forEach(obj => {
         drawCircle(obj.x, obj.y, obj.r, obj.getColor())
@@ -193,12 +193,20 @@ setInputCallbackAndCall('spice-pixelate-toggle', (e) => {
     setCanvasSize()
 })
 
+const pyroLaugh = new Audio('/assets/audio/laughlong01.mp3')
 setInputCallbackAndCall('spice-massive-toggle', (e) => {
     massiveMode = e.checked
     maxParticleCount = massiveMode ? massiveMaxParticleCount : normalMaxParticleCount
     scene = []
-    
+
     setParticleCountGUI()
+
+    if (massiveMode) {
+        pyroLaugh.currentTime = 0
+        pyroLaugh.play()
+    } else {
+        pyroLaugh.pause()
+    }
 })
 
 document.getElementById('spice-souce-code-link').addEventListener('mousedown', (e) => {
