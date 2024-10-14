@@ -58,14 +58,20 @@ setCanvasSize()
 
 var [mouseX, mouseY] = [0, 0]
 
-document.querySelector("body").addEventListener('mousemove', (e) => [mouseX, mouseY] = [e.x, e.y])
-document.querySelector("body").addEventListener('mouseenter', (e) => [mouseX, mouseY] = [e.x, e.y])
-document.querySelector("body").addEventListener('mouseleave', () => [mouseX, mouseY] = [undefined, undefined])
+document.addEventListener('mousemove', (e) => [mouseX, mouseY] = [e.x, e.y])
+document.addEventListener('mouseenter', (e) => [mouseX, mouseY] = [e.x, e.y])
+document.addEventListener('mouseleave', () => [mouseX, mouseY] = [NaN, NaN])
 window.addEventListener('resize', () => setCanvasSize())
 
 function addParticle(x = mouseX, y = mouseY, fireBaseR = 20) {
-    if (x === undefined)
+    if (x === NaN)
         return
+
+    if (!massiveMode) {
+        let minDistanceToEdge = Math.min(x, y, window.innerHeight - y, window.innerWidth - x)
+        if (minDistanceToEdge < 7)
+            return
+    }
 
     // Fire
     scene.push({
