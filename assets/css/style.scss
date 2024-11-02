@@ -201,6 +201,10 @@ var {
 
 #pre-footer-hr-grid-item {
     padding: 0 var(--content-horizontal-padding);
+
+    hr {
+        margin: 0;
+    }
 }
 
 footer {
