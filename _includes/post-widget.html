@@ -1,8 +1,8 @@
 {% assign post = include.post %}
 
 <div class="post-widget">
-    <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-    <div class="post-date">{{ post.date }}</div>
+    <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+    <div class="post-date">{{ post.date | date: "%-d %B %Y" }}</div>
     <p>
         {% if post.description %}
             {{ post.description }}

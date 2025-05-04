@@ -1,6 +1,6 @@
 @mixin colors-light {
     // --page-bg-color: rgb(216, 226, 236);
-    --page-bg-color: white;
+    --page-bg-color: #f0f0f0;
     --page-bg-darker-color: #bdc7d0;
     --content-bg-color: white;
     // --qoute-bg-color: #f4f4f4;
@@ -18,10 +18,10 @@
     --table-border-color: var(--accent-color-darker);
 
     --background-body: var(--page-bg-color);
-    --background: #f0f0f0;
+    --background: #e0e0e0;
     --button-base: var(--background);
-    --text-main: #333;
-    --text-bright: #000;
+    --text-main: #444; // Body and header links
+    --text-bright: #444; // Headings
     --selection: #1c76c540;
 }
 
@@ -43,8 +43,9 @@
     --button-base: var(--background);
     --button-hover: #4d4d4d;
     --text-main: #dddddd;
-    --text-bright: #eee;
-    --selection: #1c76c5d0;
+    --text-bright: #dddddd;
+    --selection: #30485ed0;
+    
     --code: white;
     --border: var(--muted-color);
 }

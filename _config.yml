@@ -1,6 +1,8 @@
 title: OverShifted's Blog
 url: "https://overshifted.github.io"
 
+markdown: kramdown
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap

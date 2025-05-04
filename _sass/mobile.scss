@@ -11,7 +11,11 @@
         flex-direction: column;
 
         li {
-            margin-left: 1em !important;
+            margin-left: 25px !important;
+
+            a {
+                padding: 2px 0 !important;
+            }
         }
     }
     
@@ -22,5 +26,9 @@
             // Oops! You found an easter egg.
             display: block !important;
         }
+    }
+
+    span.cmd {
+        display: inline !important;
     }
 }
