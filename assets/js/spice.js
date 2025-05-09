@@ -5,8 +5,8 @@ const canvas = document.getElementById('spice-canvas')
 const ctx = canvas.getContext('2d')
 
 const massiveModeStep = 150
-const massiveMaxParticleCount = 1100
-const normalMaxParticleCount = 120
+const massiveMaxParticleCount = 2000
+const normalMaxParticleCount = 200
 
 const pixelateCanvasScale = 12
 const normalCanvasScale = 1
@@ -25,8 +25,8 @@ function drawCircle(centerX, centerY, radius, color) {
 }
 
 function setCanvasSize(width = window.innerWidth, height = window.innerHeight) {
-    canvas.width = width / canvasScale
-    canvas.height = height / canvasScale
+    canvas.width = width / canvasScale * window.devicePixelRatio
+    canvas.height = height / canvasScale * window.devicePixelRatio
 }
 
 const clearCanvas = () => ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -145,7 +145,7 @@ function update() {
         obj.x += obj.velX * deltaTime
         obj.y += obj.velY * deltaTime
 
-        if (obj.y + obj.r <= 0 || obj.y + obj.r <= 0 || obj.x - obj.r >= window.innerWidth || obj.r <= 1)
+        if (obj.y + obj.r <= 0 || obj.x - obj.r >= window.innerWidth || obj.r <= 1)
             scene.splice(i, 1)
     }
 }
@@ -155,12 +155,13 @@ function render() {
         return
 
     requestAnimationFrame(render)
-    update()
 
     clearCanvas()
     scene.forEach(obj => {
-        drawCircle(obj.x, obj.y, obj.r, obj.getColor())
+        drawCircle(obj.x * window.devicePixelRatio, obj.y * window.devicePixelRatio, obj.r, obj.getColor())
     })
+
+    update()
 }
 
 
