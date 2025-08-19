@@ -5,11 +5,11 @@ description: I just wanted to test my new OLED screen, and ended up manipulating
 ---
 
 I just got my first little SSD1306 OLED screen and wanted to do something cool with
-it after testing some basic stuff on it. So as any sane person would do, I decided
+it after running some tests. So as any sane person would do, I decided
 to show [Bad Apple](https://www.youtube.com/watch?v=9lNZ_Rnr7Jc) on it; just to remember
 I don't have enough brain cells left to pull it off by myself. So I searched the web
 and found this great project: [hackffm/ESP32_BadApple](https://github.com/hackffm/ESP32_BadApple).
-And they take most of the credit, as everything else I did, was based on their great work.
+They deserve most of the credit, since everything I did was based on their excellent work.
 
 The repo contains compressed video data, and an Arduino sketch along with a few C++ files
 to decompress and display the actual video frames, which are stored on the microcontroller's
@@ -44,7 +44,7 @@ if (listenOnProcess(new String[] {
 }) != 0) // ...
 ```
 
-1. [**Write the image to ESP32's flash**](https://github.com/me-no-dev/arduino-esp32fs-plugin/blob/9ef3bcd665b8f9dd227f3eac8b966861cfe5e5a4/src/ESP32FS.java#L374)
+1. [**Writing the image to ESP32's flash**](https://github.com/me-no-dev/arduino-esp32fs-plugin/blob/9ef3bcd665b8f9dd227f3eac8b966861cfe5e5a4/src/ESP32FS.java#L374)
    with `esptool.py` (or send it over the network with `espota.py`, in which case
    we don't need to explicitly specify the partition address):
 ```java
@@ -113,10 +113,10 @@ default_ffat.csv                  max_app_8MB.csv                             ti
    use the second method below.
 
 2. or **Read the partition table directly from the flash**. There is an offset into
-   the flash where the partition table is written in binary. And that offset varies between different
+   the flash where the partition table is written in binary which varies between different
    [configurations](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/kconfig-reference.html#config-partition-table-offset),
-   but the [default value](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/partition-tables.html)
-   is `0x8000` and it's `0xC00` bytes long.
+   but the [default offset](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/partition-tables.html)
+   is `0x8000` and the table size is `0xC00` bytes.
 
    Knowing that, we can continue by dumping that section into a file:
 ```sh
@@ -124,7 +124,7 @@ esptool.py --port /dev/ttyACM0 read_flash 0x8000 0xc00 partition-table.bin
 ```
    Then, we parse the binary to csv:
 ```sh
-gen_esp32part.py /tmp/pt
+gen_esp32part.py partition-table.bin
 ```
    (The `gen_esp32part.py` script is included with ESP-IDF and Arduino's ESP32 package.
    You can try searching for it in the Arduino package files if you have trouble finding it)
@@ -150,7 +150,7 @@ instead of 1000) for the postfixes. Also, all these values are in bytes.
 Easy, just run this and make sure to replace the number after `-s` with
 whatever SPIFFS partition size you had:
 ```sh
-mkspiffs -c data/ -p 256 -b 4096 -s 1441792 data.spiffs.bin
+mkspiffs -c data/ -p 256 -b 4096 -s 1441792 spiffs.bin
 ```
 (Again, `mkspiffs` is included in Arduino package files)
 
@@ -169,13 +169,13 @@ esptool.py               \
   --flash_mode qio       \
   --flash_freq 80m       \
   --flash_size detect    \
-  2686976 ./data.spiffs.bin
+  2686976 ./spiffs.bin
 ```
 All these values can be gathered from the same `Tools` menu mentioned above.
 But remember, this command can be simplified since alot of these flags are
 not mandatory:
 ```sh
-esptool.py --baud 921600 --port /dev/ttyACM0 write_flash 2686976 ./data.spiffs.bin
+esptool.py --baud 921600 --port /dev/ttyACM0 write_flash 2686976 ./spiffs.bin
 ```
 (I kept `--baud` because the default rate was too slow. If you experience any weired
 behavior, consider removing this flag or using lower baud rates.)
