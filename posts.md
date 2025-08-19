@@ -1,5 +1,5 @@
 ---
-title: My Posts
+title: My posts
 layout: page
 description: Things I write
 ---
@@ -7,9 +7,9 @@ description: Things I write
 This is where I write stuff. An [Atom feed](/feed.xml) is also available.
 
 <div id="post-widgets-container">
-    {% for post in site.posts %}
-        <li>
-             {% include post-widget.html post=post %}
-        </li>
-    {% endfor %}
+{% for post in site.posts %}
+    <li>
+        {% include post-widget.html post=post %}
+    </li>
+{% endfor %}
 </div>

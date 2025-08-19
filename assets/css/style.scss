@@ -120,7 +120,9 @@ header {
 
     // font-family: Roboto;
     // font-family: "Noto Serif", serif;
-    font-family: "Mate", serif;
+    font-family: "Source Serif 4", serif;
+    // font-family: "Source Sans 3", serif;
+    // font-family: "Mate", serif;
 
     #content-grid-item {
         // box-shadow:
@@ -138,6 +140,7 @@ header {
             // font-family: "Iosevka Web", monospace;
             // text-align: center;
             margin-top: 4rem;
+            font-family: "Source Sans 3", sans-serif;
         }
 
         h1 {
@@ -221,6 +224,11 @@ header {
             border-radius: 0;
             fill: var(--text-bright);
         }
+    }
+
+    > * {
+        // Avoid child blocks to overflow the grid region
+        min-width: 0;
     }
 }
 
@@ -368,26 +376,28 @@ footer {
     position: absolute;
 }
 
-input, button {
-    transform: none !important;
-}
+// input, button {
+//     transform: none !important;
+// }
 
 .muted {
     color: var(--muted-color)
 }
 
 ul {
-    list-style: none;
+    // list-style: none;
 
-    li::marker {
-        content: "* ";
-        font-family: "Iosevka Web", monospace;
+    > li::marker {
+        // content: "[ ] ";
+        // transform: translateY(-100px);
+        // font-family: "Iosevka Web", monospace;
+        // font-size: small;
         color: var(--accent-color-darker);
     }
 }
 
 ol > li::marker {
-    font-family: "Iosevka Web", monospace;
+    // font-family: "Iosevka Web", monospace;
     color: var(--accent-color-darker);
 }
 
@@ -416,5 +426,18 @@ code {
 #comments-container-light, #comments-container-dark {
     margin-top: 4rem;
 }
+
+button:active, input:active {
+    transform: scale(0.9) !important;
+}
+
+// button:focus, input:focus {
+//     box-shadow: none !important;
+// }
+
+.overshifted {
+    font-family: "Iosevka Web", monospace;
+}
+
 
 @import "mobile";

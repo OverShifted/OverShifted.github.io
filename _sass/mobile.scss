@@ -18,17 +18,19 @@
             }
         }
     }
-    
-    footer {
-        flex-direction: column;
-
-        > a {
-            // Oops! You found an easter egg.
-            display: block !important;
-        }
-    }
 
     span.cmd {
         display: inline !important;
+    }
+}
+
+@media (max-width: 750px) {
+    footer {
+        flex-direction: column;
+
+        .surprise {
+            // Oops! You found an easter egg.
+            display: block !important;
+        }
     }
 }

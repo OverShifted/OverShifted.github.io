@@ -26,8 +26,8 @@ Hi, I am Sepehr. Here I write what I think. If you're interested to know who I a
 <!-- <input type = "range" min="0" max="150" value="120" step="1" id="spice-max-particle-count"/> -->
 
 Here you can find:
-- [My Posts](/posts)
-- [My Projects](/projects)
+- [My posts](/posts)
+- [My projects](/projects)
 - [A little biography](/about)
 <!-- - [My neighbours](/neighbours) -->
 

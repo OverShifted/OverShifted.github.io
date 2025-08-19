@@ -1,6 +1,6 @@
 @mixin colors-light {
     // --page-bg-color: rgb(216, 226, 236);
-    --page-bg-color: #f0f0f0;
+    --page-bg-color: #f7f7f7;
     --page-bg-darker-color: #bdc7d0;
     --content-bg-color: white;
     // --qoute-bg-color: #f4f4f4;
@@ -18,11 +18,14 @@
     --table-border-color: var(--accent-color-darker);
 
     --background-body: var(--page-bg-color);
-    --background: #e0e0e0;
+    --background: #e6e6e6;
     --button-base: var(--background);
-    --text-main: #444; // Body and header links
-    --text-bright: #444; // Headings
+    --button-hover: #c4c4c4;
+    --text-main: #222; // Body and header links
+    --text-bright: #000; // Headings
     --selection: #1c76c540;
+
+    --focus: var(--accent-color);
 }
 
 @mixin colors-dark {
@@ -48,4 +51,6 @@
     
     --code: white;
     --border: var(--muted-color);
+    
+    --focus: var(--accent-color);
 }
