@@ -18,7 +18,8 @@
     --table-border-color: var(--accent-color-darker);
 
     --background-body: var(--page-bg-color);
-    --background: #e6e6e6;
+    --background: #eee;
+    --border: #ddd;
     --button-base: var(--background);
     --button-hover: #c4c4c4;
     --text-main: #222; // Body and header links
@@ -43,6 +44,7 @@
 
     --scrollbar-thumb: var(--accent-color-darker);
     --background: #2d2d2d;
+    --border: #444;
     --button-base: var(--background);
     --button-hover: #4d4d4d;
     --text-main: #dddddd;
@@ -50,7 +52,7 @@
     --selection: #30485ed0;
     
     --code: white;
-    --border: var(--muted-color);
+    // --border: var(--muted-color);
     
     --focus: var(--accent-color);
 }

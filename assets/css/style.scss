@@ -11,7 +11,7 @@
 
 body {
     margin: var(--grid-gap) auto;
-    max-width: 850px;
+    max-width: 750px;
     // position: relative;
     // box-sizing: border-box;
 
@@ -48,6 +48,10 @@ header {
         flex-wrap: wrap;
         gap: 0.2rem 3rem;
         padding: 0;
+
+        a {
+            text-decoration: none !important;
+        }
 
         div.shell {
             display: flex;
@@ -130,7 +134,7 @@ header {
         //     -25px 0 0 0px rgb(74, 153, 255);
         // background-color: var(--content-bg-color);
         padding: 0 var(--content-horizontal-padding);
-        font-size: 1.3em;
+        font-size: 1.1em;
 
         // border-bottom: 2px solid var(--page-bg-darker-color);
 
@@ -281,6 +285,7 @@ code {
     border-radius: 0;
     font-family: "Iosevka Web", monospace;
     line-height: 130%;
+    border: 1px solid var(--border);
 }
 
 blockquote {
@@ -326,7 +331,7 @@ footer {
 .post-widget {
     // padding: 1rem;
     // border: blue dashed;
-    margin-bottom: 2rem;
+    margin-top: 1.2rem;
 
     > h3 {
         display: inline;
@@ -415,12 +420,18 @@ h2, h3, h4, h5, h6 {
     display: none;
 }
 
-a:hover {
-    background-color: var(--accent-color-transparent);
-}
+// a:hover {
+//     background-color: var(--accent-color-transparent);
+// }
 
 code {
     font-size: 0.9em;
+    padding: 2px 4px !important;
+}
+
+pre > code {
+    font-size: 0.9em;
+    padding: 10px !important;
 }
 
 #comments-container-light, #comments-container-dark {
@@ -437,6 +448,24 @@ button:active, input:active {
 
 .overshifted {
     font-family: "Iosevka Web", monospace;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+    transform: translateY(3px);
+    margin-left: 0.3em;
+}
+
+.overshifted-box {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-color: var(--accent-color);
+    filter: grayscale(0.7);
+}
+
+.overshifted:hover .overshifted-box {
+    filter: none;
 }
 
 
