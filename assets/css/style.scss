@@ -446,27 +446,25 @@ button:active, input:active {
 //     box-shadow: none !important;
 // }
 
-.overshifted {
-    font-family: "Iosevka Web", monospace;
-    display: inline-flex;
-    flex-direction: row;
+.copyright-span {
+    display: flex;
     align-items: center;
-    gap: 0.3em;
-    transform: translateY(3px);
-    margin-left: 0.3em;
-}
+    gap: 0.5em;
 
-.overshifted-box {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    background-color: var(--accent-color);
-    filter: grayscale(0.7);
-}
+    .overshifted {
+        font-family: "Iosevka Web", monospace;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.3em;
 
-.overshifted:hover .overshifted-box {
-    filter: none;
+        .overshifted-box {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+            background-color: var(--links);
+        }
+    }
 }
-
 
 @import "mobile";
