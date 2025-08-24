@@ -1,8 +1,7 @@
 <head>
-    <meta charset="utf-8" />
     {% if site.google_analytics %}
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-79DYV0G4VG"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -11,6 +10,8 @@
         gtag('config', '{{ site.google_analytics }}');
     </script>
     {% endif %}
+
+    <meta charset="utf-8" />
 
     <title>{{ include.title }}</title>
     {% if include.description %}<meta name="description" content="{{ include.description }}">{% endif %}
