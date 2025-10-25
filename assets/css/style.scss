@@ -10,7 +10,7 @@
 }
 
 body {
-    margin: var(--grid-gap) auto;
+    margin: 0 auto;
     max-width: 750px;
     // position: relative;
     // box-sizing: border-box;
@@ -119,8 +119,11 @@ header {
 }
 
 #main-grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: var(--grid-gap);
+
+    min-height: 100vh;
 
     // font-family: Roboto;
     // font-family: "Noto Serif", serif;
@@ -215,6 +218,8 @@ header {
     }
 
     #nav-header-grid-item/*, #page-date */{
+        margin-top: var(--grid-gap);
+
         // background-color: blanchedalmond;
         font-family: "Iosevka Web", monospace;
 
@@ -308,6 +313,7 @@ var {
 footer {
     border: none;
     padding: 3rem var(--content-horizontal-padding);
+    margin-top: auto;
 
     display: flex;
     justify-content: space-between;
