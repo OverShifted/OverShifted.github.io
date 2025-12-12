@@ -1,31 +1,61 @@
-// This file is distributed under GNU GPL 3.0 or later
-"use strict";
+"use strict"
 
-// Load saved theme
-{
-    let savedTheme = localStorage.getItem('theme') || 'auto'
-    if (!['auto', 'dark', 'light'].includes(savedTheme))
-        savedTheme = 'auto'
-
-    document.documentElement.setAttribute('data-theme', savedTheme)
+function sendMessageToGiscus(message) {
+    const iframe = document.querySelector('iframe.giscus-frame')
+    if (!iframe) return
+    iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app')
 }
 
-window.addEventListener('load', () => {
-    document.getElementById('theme-switcher').addEventListener('click', (e) => {
-        let currentTheme = document.documentElement.getAttribute('data-theme') || 'auto'
+function resolveTheme(theme) {
+    if (!['auto', 'dark', 'light'].includes(theme))
+        theme = 'auto'
 
-        if (currentTheme === 'auto')
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-                currentTheme = 'dark'
-            else
-                currentTheme = 'light'
-        
+    if (theme === 'auto')
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+            theme = 'dark'
+        else
+            theme = 'light'
+
+    return theme
+}
+
+function setTheme(theme, setLocalStorage = false) {
+    document.documentElement.setAttribute('data-theme', theme)
+    sendMessageToGiscus({ setConfig: { theme } })
+
+    if (setLocalStorage) {
+        localStorage.setItem('theme', theme)
+    }
+}
+
+function setInitialTheme() {
+    let savedTheme = resolveTheme(localStorage.getItem('theme') || 'auto')
+    setTheme(savedTheme)
+}
+
+setInitialTheme()
+
+document.addEventListener("DOMContentLoaded", (_event) => {
+    document.getElementById('theme-switcher').addEventListener('click', (_e) => {
+        let currentTheme = resolveTheme(document.documentElement.getAttribute('data-theme') || 'auto')
+
         let nextTheme = {
             'light': 'dark',
             'dark': 'light'
         }[currentTheme]
 
-        document.documentElement.setAttribute('data-theme', nextTheme)
-        localStorage.setItem('theme', nextTheme);
+        setTheme(nextTheme, true)
     })
 })
+
+function handleMessage(event) {
+    if (event.origin !== 'https://giscus.app') return
+    if (!(typeof event.data === 'object' && event.data.giscus)) return
+
+    // const giscusData = event.data.giscus
+    setInitialTheme()
+
+    window.removeEventListener('message', handleMessage)
+}
+
+window.addEventListener('message', handleMessage)

@@ -1,28 +1,51 @@
-// Light theme rules must be applied even when the dark theme
-// is being used. Since it's more like a "base" theme.
+@use "syntax-light" as *;
 
-@import "colors";
-@import "syntax-light";
+@mixin colors-light {
+    --page-bg-color: #f7f7f7;
+    --content-bg-color: white;
 
-// Gets applied on :root
+    --tr-0-bg-color: rgb(74 153 255 / 20%);
+    --tr-1-bg-color: transparent;
+    --table-border-color: var(--accent-color-darker);
+
+    --accent-color: rgb(74, 153, 255);
+    --accent-color-transparent: rgb(74, 153, 255, 30%);
+    --accent-color-darker: rgb(48, 108, 185);
+    --muted-color: rgb(130, 130, 130);
+
+    --nav-home-link-color: white;
+    --nav-link-color: var(--text-main);
+    --nav-marker-color: var(--accent-color);
+    
+    --background-darker: #dcdcdc;
+
+    --background-body: var(--page-bg-color);
+    --background: #eaeaea;
+    --border: #ddd;
+    --button-base: var(--background);
+    --button-hover: #c4c4c4;
+    --text-main: #222; // Body and header links
+    --text-bright: #000; // Headings
+    --text-muted: var(--muted-color);
+    --selection: #1c76c540;
+    --focus: var(--accent-color);
+}
+
 @mixin theme-light {
     @include colors-light;
-    
-    img.img-light-only {
-        display: block;
-    }
-    
-    img.img-dark-only {
-        display: none;
-    }
-
-    #comments-container-light {
-        display: block;
-    }
-    
-    #comments-container-dark {
-        display: none;
-    }
-
     @include syntax-light;
+
+    .hide-in-light-mode {
+        // display: none;
+
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #theme-switcher .hide-in-light-mode {
+        transition: transform ease-out 0.2s, opacity ease-out 0.1s !important;
+        transform: scale(0) !important;
+    }
 }

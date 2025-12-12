@@ -12,7 +12,7 @@ To follow this guide, you are going to an emulator to *emulate* a real Atari dev
 
 Now, run Stella and find the downloaded ROM file (It is probably a `.zip` file), you should see something like this:
 
-> **_NOTE:_** If you are using an older version of Stella, you might need to manually unzip the file and look for the `.bin` file inside it.
+> **NOTE:** If you are using an older version of Stella, you might need to manually unzip the file and look for the `.bin` file inside it.
 
 {% include themed-img.html
     alt="stella_home"

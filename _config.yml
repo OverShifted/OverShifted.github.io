@@ -1,6 +1,12 @@
 title: OverShifted's Blog
 url: "https://overshifted.github.io"
 
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+
 markdown: kramdown
 
 plugins:

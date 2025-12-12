@@ -1,2 +1,4 @@
-<img class="img-light-only" alt="{{ include.alt }}" src="{{ include.light }}" />
-<img class="img-dark-only" alt="{{ include.alt }}" src="{{ include.dark }}" />
+<p style="position: relative;">
+<img class="hide-in-dark-mode" alt="{{ include.alt }}" src="{{ include.light }}" />
+<img class="hide-in-light-mode" alt="{{ include.alt }}" src="{{ include.dark }}" />
+</p>
