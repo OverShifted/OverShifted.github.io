@@ -4,7 +4,7 @@
     }
 
     body {
-        // padding: 0;
+        padding: 0;
     }
 
     nav > ul {
@@ -26,7 +26,7 @@
 
 @media (max-width: 750px) {
     footer {
-        flex-direction: column;
+        flex-direction: column !important;
 
         .surprise {
             // Oops! You found an easter egg.
