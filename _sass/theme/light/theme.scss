@@ -1,4 +1,5 @@
-@use "syntax-light" as *;
+@use "../common.scss" as *;
+@use "syntax" as *;
 
 @mixin colors-light {
     --page-bg-color: #f7f7f7;
@@ -35,17 +36,5 @@
     @include colors-light;
     @include syntax-light;
 
-    .hide-in-light-mode {
-        // display: none;
-
-        opacity: 0;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    #theme-switcher .hide-in-light-mode {
-        transition: transform ease-out 0.2s, opacity ease-out 0.1s !important;
-        transform: scale(0) !important;
-    }
+    @include hide-in-theme(hide-in-light-mode);
 }

@@ -1,0 +1,14 @@
+@mixin hide-in-theme($hidden-class) {
+	.#{$hidden-class} {
+        // display: none;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #theme-switcher .#{$hidden-class} {
+        transition: transform ease-out 0.2s, opacity ease-out 0.1s !important;
+        transform: scale(0) !important;
+    }
+}

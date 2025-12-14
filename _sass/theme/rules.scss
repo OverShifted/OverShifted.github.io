@@ -1,5 +1,5 @@
-@use "theme-light" as *;
-@use "theme-dark" as *;
+@use "light/theme" as *;
+@use "dark/theme" as *;
 
 :root {
     --border-radius: 5px;

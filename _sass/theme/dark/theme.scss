@@ -1,4 +1,5 @@
-@use "syntax-dark" as *;
+@use "../common.scss" as *;
+@use "syntax" as *;
 
 @mixin colors-dark {
     --page-bg-color: #1a1a1a;
@@ -36,18 +37,7 @@
     @include colors-dark;
     @include syntax-dark;
 
-    .hide-in-dark-mode {
-        // display: none;
-        opacity: 0;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    #theme-switcher .hide-in-dark-mode {
-        transition: transform ease-out 0.2s, opacity ease-out 0.1s !important;
-        transform: scale(0) !important;
-    }
+    @include hide-in-theme(hide-in-dark-mode);
 
     #spice-canvas {
         opacity: 80%;
