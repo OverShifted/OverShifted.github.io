@@ -43,6 +43,12 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      - name: Patch Rouge
+        run: |
+          curl -L https://github.com/rouge-ruby/rouge/pull/2185.diff -o rouge-patch.diff
+          ls -lrth ./vendor/bundle/ruby/
+          sed -i "s|lib/rouge/formatters/html_table.rb|./vendor/bundle/ruby/$(ruby -e 'print RUBY_VERSION.split(".").first(2).join(".") + ".0"')/gems/rouge-$(bundle show rouge | grep -oP 'rouge-(\d+\.\d+\.\d+)' | cut -d'-' -f2)/lib/rouge/formatters/html_table.rb|" rouge-patch.diff
+          patch -p1 < rouge-patch.diff
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
